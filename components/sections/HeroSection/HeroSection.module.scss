@@ -1,0 +1,161 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.hero {
+  display: grid;
+  width: 100%;
+  min-height: clamp(28rem, 88svh, 100svh);
+  overflow: hidden;
+
+  @include breakpoint(md) {
+    min-height: clamp(32rem, 65svh, 52rem);
+  }
+
+  @include breakpoint(lg) {
+    min-height: 100svh;
+  }
+
+  > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  min-height: inherit;
+  isolation: isolate;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 20%;
+
+  @include breakpoint(md) {
+    object-position: center 30%;
+  }
+
+  @include breakpoint(lg) {
+    object-position: center center;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.28) 45%,
+      rgba(0, 0, 0, 0.62) 72%,
+      rgba(0, 0, 0, 0.78) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.42) 0%,
+      rgba(0, 0, 0, 0.18) 42%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
+  pointer-events: none;
+}
+
+.content {
+  z-index: 1;
+  align-self: end;
+  width: 100%;
+  padding-top: clamp(5rem, 14vh, $space-xxl);
+  padding-bottom: clamp($space-md, 5vh, 4.5rem);
+}
+
+.contentGrid {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, $space-md);
+  align-items: end;
+
+  @include breakpoint(md) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  @include breakpoint(lg) {
+    align-items: end;
+    gap: clamp($space-md, 5vw, $space-lg);
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 42rem;
+}
+
+.heading {
+  margin: 0;
+  font-family: $font-primary;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.05;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-white;
+}
+
+.subheading {
+  margin: 0;
+  max-width: 28rem;
+  font-family: $font-primary;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-weight: $font-weight-regular;
+  line-height: 1.45;
+  color: rgba($color-white, 0.92);
+}
+
+.cta {
+  display: flex;
+
+  @include breakpoint-down(md) {
+    width: 100%;
+  }
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid $color-white;
+  border-radius: $border-radius-pill;
+  background-color: transparent;
+  color: $color-white;
+  font-family: $font-primary;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background-color: rgba($color-white, 0.12);
+  }
+
+  @include breakpoint(md) {
+    width: auto;
+    flex-shrink: 0;
+    padding: 0.75rem 1.375rem;
+  }
+
+  @include breakpoint(lg) {
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+.ctaIcon {
+  flex-shrink: 0;
+}

@@ -1,0 +1,45 @@
+@use "variables" as *;
+
+@mixin breakpoint($size) {
+  @if $size == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $size == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @if $size == md {
+    @media (max-width: calc(#{$breakpoint-md} - 1px)) {
+      @content;
+    }
+  } @else if $size == lg {
+    @media (max-width: calc(#{$breakpoint-lg} - 1px)) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (max-width: calc(#{$breakpoint-xl} - 1px)) {
+      @content;
+    }
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

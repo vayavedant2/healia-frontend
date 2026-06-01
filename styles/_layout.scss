@@ -1,0 +1,76 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// —— Section mixins ——
+@mixin section-base {
+  width: 100%;
+}
+
+@mixin section-padding-default {
+  padding-top: clamp(3.5rem, 8vw, $space-xl);
+  padding-bottom: clamp(3.5rem, 8vw, $space-xl);
+}
+
+@mixin section-padding-large {
+  padding-top: clamp(4rem, 10vw, $space-xxl);
+  padding-bottom: clamp(4rem, 10vw, $space-xxl);
+}
+
+@mixin section-background-light {
+  background-color: $color-background;
+}
+
+@mixin section-background-dark {
+  background-color: $color-footer-bg;
+  color: $color-footer-text;
+}
+
+// —— Container mixins ——
+@mixin container-base {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding-inline: $space-sm;
+
+  @include breakpoint(md) {
+    padding-inline: $space-md;
+  }
+
+  @include breakpoint(lg) {
+    padding-inline: $space-xl;
+  }
+}
+
+@mixin container-wide {
+  @include container-base;
+}
+
+@mixin container-narrow {
+  @include container-base;
+  max-width: $container-max-width-narrow;
+}
+
+// —— Global layout utilities (for non-module markup or composition) ——
+.section {
+  @include section-base;
+}
+
+.section--light {
+  @include section-background-light;
+}
+
+.section--dark {
+  @include section-background-dark;
+}
+
+.container {
+  @include container-base;
+}
+
+.container--wide {
+  @include container-wide;
+}
+
+.container--narrow {
+  @include container-narrow;
+}

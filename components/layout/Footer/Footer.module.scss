@@ -1,0 +1,344 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/layout" as *;
+@use "../../../styles/typography" as *;
+
+.footer {
+  @include section-background-dark;
+  padding: 3rem 0 2.5rem;
+
+  @include breakpoint(md) {
+    padding: $space-lg 0 3rem;
+  }
+
+  @include breakpoint(lg) {
+    padding: 5rem 0 3.5rem;
+  }
+}
+
+.inner {
+  display: grid;
+  gap: 0;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+
+  @include breakpoint(md) {
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+    gap: $space-md;
+    align-items: start;
+  }
+
+  @include breakpoint(lg) {
+    grid-template-columns: minmax(0, 0.46fr) minmax(0, 0.54fr);
+    gap: 3rem;
+  }
+}
+
+.ctaSection {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
+
+.heading {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-footer-text;
+
+  @include breakpoint(md) {
+    font-size: 2rem;
+  }
+
+  @include breakpoint(lg) {
+    font-size: 2.5rem;
+  }
+}
+
+.subtext {
+  margin: 0;
+  max-width: 26rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: $color-footer-text-muted;
+
+  @include breakpoint(md) {
+    font-size: 1rem;
+  }
+}
+
+.subscribeForm {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 26rem;
+
+  @include breakpoint(md) {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    max-width: none;
+  }
+}
+
+.emailInput {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: none;
+  border-radius: $border-radius-sm;
+  background-color: $color-footer-input-bg;
+  color: $color-footer-text;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+
+  &::placeholder {
+    color: $color-footer-placeholder;
+  }
+
+  &:focus {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+
+  @include breakpoint(md) {
+    flex: 1;
+    min-width: 0;
+    border-radius: $border-radius-sm 0 0 $border-radius-sm;
+  }
+}
+
+.subscribeButton {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: $border-radius-sm;
+  background-color: $color-accent;
+  color: $color-footer-bg;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: $font-weight-medium;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-accent-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-footer-text;
+    outline-offset: 2px;
+  }
+
+  @include breakpoint(md) {
+    width: auto;
+    flex-shrink: 0;
+    border-radius: 0 $border-radius-sm $border-radius-sm 0;
+    padding-inline: 1.75rem;
+  }
+}
+
+.socialRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid $color-footer-panel-border;
+  border-radius: $border-radius-sm;
+  background-color: $color-footer-social-bg;
+  color: $color-accent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent-hover;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 2px;
+  }
+}
+
+.navPanel {
+  border: 1px solid $color-footer-panel-border;
+  border-radius: $border-radius-lg;
+  padding: 1.5rem 1.25rem;
+
+  @include breakpoint(md) {
+    padding: 1.75rem 1.5rem;
+  }
+
+  @include breakpoint(lg) {
+    padding: $space-md 1.75rem;
+  }
+}
+
+.navColumnsMobile {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1.5rem;
+
+  @include breakpoint(md) {
+    display: none;
+  }
+}
+
+.navColumnsDesktop {
+  display: none;
+
+  @include breakpoint(md) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 1.25rem;
+  }
+
+  @include breakpoint(lg) {
+    column-gap: $space-md;
+  }
+}
+
+.navColumn {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.625rem;
+}
+
+.navLink,
+.navLinkActive {
+  display: inline-block;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  @include breakpoint(lg) {
+    font-size: 1rem;
+  }
+}
+
+.navLink {
+  color: $color-footer-text-muted;
+
+  &:hover {
+    color: $color-footer-text;
+  }
+}
+
+.navLinkActive {
+  color: $color-accent;
+}
+
+.brandRow {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+
+  @include breakpoint(md) {
+    margin-top: 3.5rem;
+    justify-items: center;
+    text-align: center;
+  }
+
+  @include breakpoint(lg) {
+    margin-top: 4.5rem;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-items: stretch;
+    text-align: left;
+  }
+}
+
+.logoBlock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: $color-footer-text;
+
+  @include breakpoint(lg) {
+    grid-column: 2;
+    justify-self: center;
+  }
+}
+
+.logoIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: $color-accent;
+  flex-shrink: 0;
+
+  @include breakpoint(lg) {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: $font-weight-medium;
+  letter-spacing: $letter-spacing-tight;
+
+  @include breakpoint(lg) {
+    font-size: 1.75rem;
+  }
+}
+
+.credits {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: $color-footer-text-muted;
+
+  a {
+    color: $color-accent;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-accent-hover;
+    }
+  }
+
+  @include breakpoint(lg) {
+    grid-column: 3;
+    justify-self: end;
+    align-self: center;
+    text-align: right;
+  }
+}
+
+.disclaimer {
+  margin: $space-md 0 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: $color-footer-text-muted;
+
+  @include breakpoint(md) {
+    margin-top: 2.5rem;
+    font-size: 0.8125rem;
+  }
+
+  @include breakpoint(lg) {
+    margin-top: 3rem;
+  }
+}
+
+.visuallyHidden {
+  @include visually-hidden;
+}

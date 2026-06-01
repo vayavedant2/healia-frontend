@@ -1,0 +1,51 @@
+// —— Colors (core palette) ——
+$color-background: #fbf6f1;
+$color-text-dark: #382218;
+$color-accent: #ea8a64;
+$color-accent-hover: #d77953;
+$color-text-muted: #8a7d74;
+$color-white: #ffffff;
+$color-border: rgba(56, 34, 24, 0.1);
+
+// —— Colors (footer / dark surfaces) ——
+$color-footer-bg: $color-text-dark;
+$color-footer-text: $color-background;
+$color-footer-text-muted: rgba($color-background, 0.72);
+$color-footer-input-bg: #2a1810;
+$color-footer-panel-border: rgba($color-background, 0.18);
+$color-footer-social-bg: #2f1c14;
+$color-footer-placeholder: rgba($color-background, 0.45);
+
+// —— Typography ——
+$font-primary: var(--font-geist-sans), sans-serif;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$letter-spacing-tight: -0.02em;
+
+// —— Spacing ——
+$space-xs: 0.5rem;
+$space-sm: 1rem;
+$space-md: 2rem;
+$space-lg: 4rem;
+$space-xl: 6rem;
+$space-xxl: 8rem;
+
+// —— Layout ——
+$container-max-width: 1740px;
+$container-max-width-narrow: 42rem;
+
+// —— Border radii ——
+$border-radius-sm: 8px;
+$border-radius-md: 16px;
+$border-radius-lg: 24px;
+$border-radius-pill: 9999px;
+$border-radius-full: 50%;
+
+// —— Breakpoints ——
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;

@@ -1,0 +1,13 @@
+@use "../../../styles/layout" as *;
+
+.container {
+  @include container-base;
+}
+
+.wide {
+  @include container-wide;
+}
+
+.narrow {
+  @include container-narrow;
+}
