@@ -1,0 +1,196 @@
+@use "sass:color";
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/typography" as *;
+
+.finalCta {
+  overflow-x: hidden;
+  padding: 0 0 5rem 0;
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  max-width: 44rem;
+  margin: 0;
+  text-align: center;
+}
+
+.eyebrow {
+  @include text-eyebrow;
+  margin: 0;
+}
+
+.heading {
+  margin: 0;
+  font-family: $font-primary;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.08;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-text-dark;
+
+  @include breakpoint-down(md) {
+    font-size: clamp(2.09rem, 5.12vw, 3.49rem);
+  }
+}
+
+.headingMuted {
+  color: $color-text-muted;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 1.25rem);
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+    max-width: 56rem;
+  }
+
+  @include breakpoint(lg) {
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    max-width: 62rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2rem);
+  min-width: 0;
+  padding: clamp(1.25rem, 3.5vw, 1.5rem);
+  border: 1px solid $color-border;
+  border-radius: clamp(1rem, 2.5vw, 1.25rem);
+  background-color: rgba($color-white, 0.42);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  min-width: 0;
+}
+
+.iconBlock {
+  @include flex-center;
+  flex-shrink: 0;
+  width: clamp(2.5rem, 6vw, 2.75rem);
+  height: clamp(2.5rem, 6vw, 2.75rem);
+  border-radius: $border-radius-sm;
+  background-color: rgba($color-accent, 0.14);
+  color: $color-accent;
+}
+
+.cardTitle {
+  margin: 0;
+  padding-top: 0.125rem;
+  font-family: $font-primary;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  font-weight: $font-weight-medium;
+  line-height: 1.35;
+  color: $color-text-dark;
+}
+
+.cardButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+  padding: clamp(0.875rem, 2.5vw, 1rem) clamp(1rem, 3vw, 1.25rem);
+  border: none;
+  border-radius: $border-radius-sm;
+  font-family: $font-primary;
+  font-size: clamp(0.9375rem, 2vw, 1rem);
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-accent;
+    outline-offset: 3px;
+  }
+}
+
+.cardButtonAccent {
+  background-color: $color-accent;
+  color: $color-text-dark;
+
+  &:hover {
+    background-color: $color-accent-hover;
+    transform: translateY(-1px);
+  }
+}
+
+.cardButtonDark {
+  background-color: $color-text-dark;
+  color: $color-background;
+
+  &:hover {
+    background-color: color.adjust($color-text-dark, $lightness: 6%);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline-color: $color-text-dark;
+  }
+}
+
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-primary;
+  font-size: clamp(0.8125rem, 1.8vw, 0.875rem);
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  color: $color-text-muted;
+}
+
+.trustIcon {
+  @include flex-center;
+  flex-shrink: 0;
+  color: $color-text-muted;
+}

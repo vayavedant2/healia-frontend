@@ -95,6 +95,51 @@ export const categoryItemReveal: Variants = {
   },
 };
 
+/** Floating health labels: rise 40px into place (MobileAppSection). */
+export const floatLabelReveal: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: easeOutExpo },
+  },
+};
+
+/** Phone mockup scales in after floating labels begin (MobileAppSection). */
+export const phoneReveal: Variants = {
+  hidden: { opacity: 0, scale: 0.96, y: 20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: easeOutExpo,
+      delay: 0.32,
+    },
+  },
+};
+
+/** Section shell fades in before children animate (MobileAppSection). */
+export const sectionFade: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.5, ease: easeOutExpo, when: "beforeChildren" },
+  },
+};
+
+/** Headline, subtext, and store buttons after the phone reveal. */
+export const mobileAppContentReveal: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 0.82,
+      staggerChildren: 0.12,
+    },
+  },
+};
+
 /** Testimonial card rises from below; quote and author follow. */
 export const testimonialReveal: Variants = {
   hidden: { opacity: 0, y: 48 },
@@ -108,5 +153,108 @@ export const testimonialReveal: Variants = {
       staggerChildren: 0.14,
       delayChildren: 0.22,
     },
+  },
+};
+
+/** Testimonials section heading (y: 40 → 0). */
+export const testimonialsHeadingReveal: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: easeOutExpo },
+  },
+};
+
+/** Testimonials logo marquee fade-in. */
+export const testimonialsMarqueeReveal: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.65, ease: easeOutExpo, delay: 0.12 },
+  },
+};
+
+/** Testimonials masonry grid stagger (0.08s). */
+export const testimonialsGridReveal: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.06,
+    },
+  },
+};
+
+/** Testimonials card item (y: 60 → 0). */
+export const testimonialsCardReveal: Variants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: easeOutExpo },
+  },
+};
+
+/** Certification banner background (scale 1.08 → 1, opacity fade). */
+export const certificationBannerBgReveal: Variants = {
+  hidden: { opacity: 0, scale: 1.08 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.85, ease: easeOutExpo },
+  },
+};
+
+/** Certification banner heading (y: 60 → 0). */
+export const certificationBannerHeadingReveal: Variants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: easeOutExpo },
+  },
+};
+
+/** Certification banner content shell (staggers children). */
+export const certificationBannerReveal: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.1,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+/** Certification banner description (delay 0.1s). */
+export const certificationBannerDescReveal: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: easeOutExpo, delay: 0.1 },
+  },
+};
+
+/** Certification feature pills (delay 0.2s, stagger). */
+export const certificationPillsReveal: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+/** Certification CTA (delay 0.3s). */
+export const certificationCtaReveal: Variants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: easeOutExpo, delay: 0.3 },
   },
 };

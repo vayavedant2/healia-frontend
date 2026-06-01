@@ -1,0 +1,439 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+@use "../../../styles/typography" as *;
+
+.section {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+// —— Block 1: Certification area ——
+.certArea {
+  width: 100%;
+  background-color: $color-background;
+  padding-block: clamp(3.5rem, 8vw, $space-xl);
+}
+
+.certGrid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3rem);
+
+  @include breakpoint(lg) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+.certHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  max-width: 36rem;
+  margin: 0;
+  text-align: left;
+}
+
+.eyebrow {
+  @include text-eyebrow;
+  margin: 0;
+}
+
+.heading {
+  margin: 0;
+  font-family: $font-primary;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.08;
+  letter-spacing: $letter-spacing-tight;
+  color: $color-text-dark;
+
+  @include breakpoint-down(md) {
+    font-size: clamp(2.09rem, 5.12vw, 3.49rem);
+  }
+}
+
+.headingMuted {
+  color: $color-text-muted;
+}
+
+.badges {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2vw, 1rem);
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include breakpoint(md) {
+    gap: clamp(0.75rem, 1.5vw, 1.125rem);
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
+  @include breakpoint(lg) {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(0.875rem, 1.25vw, 1.25rem);
+  }
+}
+
+.badgeItem {
+  min-width: 0;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(0.5rem, 1.5vw, 0.75rem);
+  height: 100%;
+  min-height: clamp(7.5rem, 22vw, 9.5rem);
+  padding: clamp(0.875rem, 2.5vw, 1.25rem) clamp(0.5rem, 1.5vw, 0.875rem);
+  border: 1px solid $color-border;
+  border-radius: $border-radius-md;
+  background-color: $color-white;
+  text-align: center;
+
+  @include breakpoint(md) {
+    min-height: clamp(8.5rem, 14vw, 10.5rem);
+    padding: clamp(1rem, 2vw, 1.375rem) clamp(0.75rem, 1.5vw, 1rem);
+  }
+
+  @include breakpoint(lg) {
+    width: clamp(7.5rem, 9vw, 9.5rem);
+    min-height: clamp(9rem, 10vw, 10.75rem);
+  }
+}
+
+.badgeIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: clamp(2.25rem, 7vw, 3rem);
+  height: clamp(2.25rem, 7vw, 3rem);
+}
+
+.badgeIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.badgeLabel {
+  margin: 0;
+  font-family: $font-primary;
+  font-size: clamp(0.625rem, 2.2vw, 0.8125rem);
+  font-weight: $font-weight-regular;
+  line-height: 1.35;
+  color: $color-text-muted;
+
+  @include breakpoint(md) {
+    font-size: clamp(0.6875rem, 1.2vw, 0.8125rem);
+  }
+}
+
+// —— Block 2: Technology CTA banner ——
+.banner {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: clamp(28rem, 88vw, 40rem);
+  overflow: hidden;
+
+  @include breakpoint(md) {
+    min-height: clamp(26rem, 52vw, 34rem);
+  }
+
+  @include breakpoint(lg) {
+    min-height: clamp(28rem, 38vw, 36rem);
+  }
+
+  > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.bannerMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.bannerImageWrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: scale(1.12);
+  transform-origin: center center;
+}
+
+.bannerImageParallax {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+.bannerImage {
+  object-fit: cover;
+  object-position: center 35%;
+
+  @include breakpoint(md) {
+    object-position: center 40%;
+  }
+
+  @include breakpoint(lg) {
+    object-position: center center;
+  }
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  // Slight bleed past edges so subpixel gaps never show undarkened image.
+  top: -0.0625rem;
+  right: -0.0625rem;
+  bottom: -0.0625rem;
+  left: -0.0625rem;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.62) 45%,
+      rgba(0, 0, 0, 0.72) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.55) 42%,
+      rgba(0, 0, 0, 0.35) 68%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
+  pointer-events: none;
+}
+
+.bannerContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: inherit;
+  padding-block: clamp(3rem, 9vw, 5rem);
+}
+
+.bannerGrid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 5vw, 2.5rem);
+  width: 100%;
+
+  @include breakpoint(md) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+}
+
+.bannerCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.25rem, 3.5vw, 1.75rem);
+  min-width: 0;
+}
+
+.bannerHeading {
+  margin: 0;
+  max-width: 36rem;
+  font-family: $font-primary;
+  font-size: clamp(1.875rem, 5.8vw, 3.25rem);
+  font-weight: $font-weight-bold;
+  line-height: 1.1;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.bannerHeadingDesktop {
+  display: none;
+
+  @include breakpoint(md) {
+    display: block;
+  }
+}
+
+.bannerHeadingMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include breakpoint(md) {
+    display: none;
+  }
+}
+
+.bannerHeadingLine {
+  display: block;
+  color: $color-white;
+}
+
+.bannerHeadingPrimary {
+  color: $color-white;
+}
+
+.bannerHeadingAccent {
+  color: $color-accent;
+}
+
+@include breakpoint(md) {
+  .bannerHeading {
+    max-width: 42rem;
+  }
+
+  .bannerHeadingDesktop {
+    .bannerHeadingPrimary,
+    .bannerHeadingAccent {
+      display: block;
+    }
+  }
+}
+
+.bannerDescription {
+  margin: 0;
+  max-width: 32rem;
+  font-family: $font-primary;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-weight: $font-weight-regular;
+  line-height: 1.55;
+  color: rgba($color-white, 0.88);
+}
+
+.featurePills {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2vw, 0.875rem);
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include breakpoint(md) {
+    max-width: 36rem;
+    gap: clamp(0.625rem, 1.2vw, 0.875rem);
+  }
+}
+
+.featurePillItem {
+  min-width: 0;
+}
+
+.featurePill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: clamp(0.625rem, 2vw, 0.875rem);
+  height: 100%;
+  min-height: clamp(5.5rem, 18vw, 7rem);
+  padding: clamp(0.875rem, 2.5vw, 1.125rem);
+  border: 1px solid rgba($color-white, 0.22);
+  border-radius: $border-radius-md;
+  background: rgba($color-white, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  @include breakpoint(md) {
+    flex-direction: row;
+    align-items: center;
+    min-height: auto;
+    padding: clamp(0.75rem, 1.2vw, 0.9375rem) clamp(1rem, 1.5vw, 1.25rem);
+    border-radius: $border-radius-pill;
+  }
+}
+
+.pillIcon {
+  flex-shrink: 0;
+  width: clamp(1.5rem, 5vw, 2.5rem);
+  height: auto;
+  object-fit: contain;
+}
+
+.featurePillLabel {
+  font-family: $font-primary;
+  font-size: clamp(0.6875rem, 2.4vw, 0.875rem);
+  font-weight: $font-weight-medium;
+  line-height: 1.3;
+  color: $color-white;
+  text-align: left;
+
+  @include breakpoint(md) {
+    font-size: clamp(0.8125rem, 1vw, 0.875rem);
+    white-space: nowrap;
+  }
+}
+
+.bannerCta {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(0.625rem, 2vw, 0.75rem);
+  width: 100%;
+
+  @include breakpoint(md) {
+    align-items: center;
+    justify-self: end;
+    width: auto;
+    min-width: clamp(12rem, 18vw, 15rem);
+  }
+}
+
+.joinButton {
+  width: 100%;
+  color: $color-text-dark;
+  text-decoration: none;
+  border-radius: $border-radius-md;
+
+  &:hover:not(:disabled) {
+    color: $color-text-dark;
+  }
+
+  @include breakpoint(md) {
+    width: 100%;
+    min-width: clamp(12rem, 16vw, 14.5rem);
+    padding-inline: clamp(1.5rem, 2.5vw, 2rem);
+  }
+}
+
+.securityText {
+  margin: 0;
+  font-family: $font-primary;
+  font-size: clamp(0.6875rem, 1.8vw, 0.75rem);
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  color: rgba($color-white, 0.72);
+  text-align: left;
+
+  @include breakpoint(md) {
+    text-align: center;
+  }
+}
